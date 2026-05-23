@@ -44,14 +44,14 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                     return ListTile(
                       title: Text(item['title'], maxLines: 1, overflow: TextOverflow.ellipsis),
                       subtitle: Text('Quantité: ${item['quantity']}'),
-                      trailing: Text('\$${(item['price'] * item['quantity']).toStringAsFixed(2)}'),
+                      trailing: Text('${(item['price'] * item['quantity'] * 600).toStringAsFixed(0)} FCFA'),
                     );
                   },
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text('Total à payer: \$${cartProvider.total.toStringAsFixed(2)}', style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                child: Text('Total à payer: ${(cartProvider.total * 600).toStringAsFixed(0)} FCFA', style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
               ),
               const SizedBox(height: 24),
               Text('Informations de livraison', style: Theme.of(context).textTheme.titleLarge),

@@ -23,7 +23,7 @@ class HistoryScreen extends StatelessWidget {
                 child: ExpansionTile(
                   title: Text('Commande #${order['id']}'),
                   subtitle: Text('${order['date']} - ${order['itemCount']} articles'),
-                  trailing: Text('\$${order['total'].toStringAsFixed(2)}', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                  trailing: Text('${(order['total'] * 600).toStringAsFixed(0)} FCFA', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(16.0),

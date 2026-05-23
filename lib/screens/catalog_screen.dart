@@ -4,6 +4,17 @@ import 'package:cached_network_image/cached_network_image.dart';
 import '../data/services/api_service.dart';
 import '../data/models/product.dart';
 
+const Map<String, String> categoryTranslations = {
+  'electronics': 'Électronique',
+  'jewelery': 'Bijouterie',
+  "men's clothing": 'Vêtements Homme',
+  "women's clothing": 'Vêtements Femme',
+};
+
+String translateCategory(String category) {
+  return categoryTranslations[category] ?? category;
+}
+
 class CatalogScreen extends StatefulWidget {
   const CatalogScreen({super.key});
 
@@ -68,7 +79,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                     return Padding(
                       padding: const EdgeInsets.only(right: 8.0),
                       child: FilterChip(
-                        label: Text(category),
+                        label: Text(translateCategory(category)),
                         selected: isSelected,
                         onSelected: (selected) {
                           setState(() {
@@ -123,9 +134,9 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                       children: [
                                         Text(product.title, maxLines: 2, overflow: TextOverflow.ellipsis, style: const TextStyle(fontWeight: FontWeight.bold)),
                                         const SizedBox(height: 4),
-                                        Text('\$${product.price.toStringAsFixed(2)}', style: const TextStyle(color: Colors.green, fontWeight: FontWeight.bold, fontSize: 16)),
+                                        Text('${(product.price * 600).toStringAsFixed(0)} FCFA', style: const TextStyle(color: Colors.green, fontWeight: FontWeight.bold, fontSize: 16)),
                                         const SizedBox(height: 4),
-                                        Text(product.category, style: const TextStyle(fontSize: 12, color: Colors.grey)),
+                                        Text(translateCategory(product.category), style: const TextStyle(fontSize: 12, color: Colors.grey)),
                                       ],
                                     ),
                                   ),

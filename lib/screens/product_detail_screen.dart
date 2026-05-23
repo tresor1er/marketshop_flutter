@@ -5,6 +5,17 @@ import '../data/services/api_service.dart';
 import '../data/models/product.dart';
 import '../providers/cart_provider.dart';
 
+const Map<String, String> categoryTranslations = {
+  'electronics': 'Électronique',
+  'jewelery': 'Bijouterie',
+  "men's clothing": 'Vêtements Homme',
+  "women's clothing": 'Vêtements Femme',
+};
+
+String translateCategory(String category) {
+  return categoryTranslations[category] ?? category;
+}
+
 class ProductDetailScreen extends StatefulWidget {
   final int productId;
 
@@ -68,7 +79,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('\$${_product!.price.toStringAsFixed(2)}', style: const TextStyle(fontSize: 24, color: Colors.green, fontWeight: FontWeight.bold)),
+                          Text('${(_product!.price * 600).toStringAsFixed(0)} FCFA', style: const TextStyle(fontSize: 24, color: Colors.green, fontWeight: FontWeight.bold)),
                           Row(
                             children: [
                               const Icon(Icons.star, color: Colors.amber),
@@ -78,7 +89,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         ],
                       ),
                       const SizedBox(height: 8),
-                      Chip(label: Text(_product!.category)),
+                      Chip(label: Text(translateCategory(_product!.category))),
                       const SizedBox(height: 16),
                       Text('Description', style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold)),
                       const SizedBox(height: 8),
@@ -116,6 +127,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                             for(int i=0; i<_quantity; i++){
                               await cartProvider.addToCart(_product!);
                             }
+                            if (!context.mounted) return;
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(content: Text('Produit ajouté au panier')),
                             );

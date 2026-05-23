@@ -1,39 +1,47 @@
-# MarketShop - Version Flutter
+# MarketShop - Application E-Commerce (Version Flutter)
 
-**Développé par :** prenom-nom
-**Technologie :** Flutter avec Dart
+**Réalisé par :** Tresor Kolombia
 
-## Description
-MarketShop est une application de mini e-commerce qui permet de parcourir un catalogue de produits via l'API FakeStore, d'ajouter des articles à un panier, de passer commande et de consulter son historique.
+---
 
-## Fonctionnalités implémentées
-- [x] Écran Catalogue (Grille 2 colonnes, API, Filtres, Chargement)
-- [x] Écran Détail Produit (Affichage complet, Sélecteur quantité, Ajout panier)
-- [x] Écran Panier (Liste locale, Modification, Suppression, Total, Commande)
-- [x] Écran Commande (Formulaire validé, Sauvegarde locale, Redirection)
-- [x] Écran Historique (Liste locale des commandes passées)
-- [x] Écran Profil (Infos utilisateur, Mode Sombre, Suppression de données)
+## 🛠 Technologie Utilisée
+* **Technologie principale :** Flutter
 
-## Bibliothèques utilisées
-- `http`: ^1.6.0
-- `sqflite`: ^2.4.2
-- `provider`: ^6.1.5
-- `cached_network_image`: ^3.4.1
-- `go_router`: ^17.2.3
-- `intl`: ^0.20.2
-- `shared_preferences`: ^2.5.2
+## 📖 Description de l'application
+MarketShop est une application mobile d'e-commerce complète et moderne. Elle permet aux utilisateurs de parcourir un catalogue de produits, de consulter les détails de chaque article (prix en FCFA, description, catégorie), d'ajouter des produits à leur panier, de passer une commande et de consulter l'historique de leurs achats. L'application intègre une gestion avancée du thème (clair/sombre).
 
-## Captures d'écran
-*(Ajoutez ici 3 captures d'écran de l'application)*
-1. ![Catalogue](./screenshots/catalogue.png)
-2. ![Panier](./screenshots/panier.png)
-3. ![Historique](./screenshots/historique.png)
+## ✨ Fonctionnalités implémentées
+* ✅ Affichage du catalogue de produits
+* ✅ Affichage des détails d'un produit
+* ✅ Gestion du panier (Ajouter, modifier la quantité, supprimer)
+* ✅ Validation de la commande (Checkout avec formulaire)
+* ✅ Historique des commandes passées
+* ✅ Gestion du profil utilisateur
+* ✅ Support du Thème Clair / Sombre
+* ✅ Conversion automatique des prix en FCFA
+* ✅ Interface entièrement traduite en français
 
-## Difficultés rencontrées
-La gestion de l'état asynchrone avec SQLite et Provider a nécessité une attention particulière pour assurer que l'interface se mette à jour instantanément lors des ajouts au panier. J'ai résolu cela en m'assurant que `notifyListeners()` est appelé uniquement après que la base de données locale confirme l'enregistrement des données.
+## 📦 Bibliothèques utilisées
+* `flutter` (SDK)
+* `provider`: ^6.1.5+1 (Pour la gestion de l'état global)
+* `http`: ^1.6.0 (Pour les appels API)
+* `go_router`: ^17.2.3 (Pour le routage et la navigation)
+* `shared_preferences`: ^2.5.5 (Pour le stockage local des préférences)
+* `cached_network_image`: ^3.4.1 (Pour l'optimisation des images)
 
-## Améliorations possibles
-Si j'avais plus de temps, j'aurais implémenté des tests unitaires, un système d'authentification complet, et une animation de transition plus fluide entre les écrans lors de l'ajout au panier (par exemple, une animation de l'image du produit volant vers l'icône du panier).
+## 📸 Captures d'écran
+*(Remplacez les liens ci-dessous par les vraies images de votre application, placez vos images dans le dépôt et liez-les ici)*
 
-## Lien vers la version React Native
-[Dépôt React Native](https://github.com/votre-compte/marketshop-reactnative-prenom-nom)
+1. ![Catalogue](lien_vers_image_catalogue.png)
+2. ![Détail Produit](lien_vers_image_detail.png)
+3. ![Panier](lien_vers_image_panier.png)
+
+## 🚧 Difficultés rencontrées et solutions
+L'un des défis majeurs a été la structuration de la navigation avec `go_router` tout en préservant l'état du panier et des commandes. L'utilisation du package `provider` couplée au routeur a nécessité une architecture rigoureuse (MultiProvider à la racine). La solution a été d'extraire la logique métier dans des classes Providers dédiées (`CartProvider`, `OrderProvider`), séparant ainsi l'UI de la logique de données.
+
+## 🚀 Améliorations possibles
+Avec plus de temps, l'intégration d'un système de paiement de test (comme Stripe) aurait rendu le flux de commande plus réaliste. De plus, j'aurais aimé ajouter des animations de transition plus fluides entre les écrans (Hero animations pour les images des produits) pour donner un rendu encore plus "premium" à l'application.
+
+---
+
+🔗 **Lien vers la version React Native du projet :** [Insérez ici le lien de votre dépôt GitHub React Native]

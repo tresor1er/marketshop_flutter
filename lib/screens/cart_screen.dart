@@ -41,8 +41,8 @@ class CartScreen extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(item['title'], maxLines: 1, overflow: TextOverflow.ellipsis, style: const TextStyle(fontWeight: FontWeight.bold)),
-                                  Text('\$${item['price'].toStringAsFixed(2)}', style: const TextStyle(color: Colors.green)),
-                                  Text('Sous-total: \$${(item['price'] * item['quantity']).toStringAsFixed(2)}'),
+                                  Text('${(item['price'] * 600).toStringAsFixed(0)} FCFA', style: const TextStyle(color: Colors.green)),
+                                  Text('Sous-total : ${(item['price'] * item['quantity'] * 600).toStringAsFixed(0)} FCFA', style: const TextStyle(color: Colors.grey)),
                                 ],
                               ),
                             ),
@@ -88,7 +88,7 @@ class CartScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         const Text('Total:', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-                        Text('\$${cartProvider.total.toStringAsFixed(2)}', style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.green)),
+                        Text('${(cartProvider.total * 600).toStringAsFixed(0)} FCFA', style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.green)),
                       ],
                     ),
                     const SizedBox(height: 16),
