@@ -30,11 +30,9 @@ MarketShop est une application mobile d'e-commerce complète et moderne. Elle pe
 * `cached_network_image`: ^3.4.1 (Pour l'optimisation des images)
 
 ## 📸 Captures d'écran
-*(Remplacez les liens ci-dessous par les vraies images de votre application, placez vos images dans le dépôt et liez-les ici)*
-
-1. ![Catalogue](lien_vers_image_catalogue.png)
-2. ![Détail Produit](lien_vers_image_detail.png)
-3. ![Panier](lien_vers_image_panier.png)
+![alt text](image.png)
+![alt text](image-1.png)
+![alt text](image-2.png)
 
 ## 🚧 Difficultés rencontrées et solutions
 L'un des défis majeurs a été la structuration de la navigation avec `go_router` tout en préservant l'état du panier et des commandes. L'utilisation du package `provider` couplée au routeur a nécessité une architecture rigoureuse (MultiProvider à la racine). La solution a été d'extraire la logique métier dans des classes Providers dédiées (`CartProvider`, `OrderProvider`), séparant ainsi l'UI de la logique de données.
